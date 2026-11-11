@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: undercover-showroom
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: PUBLIC_HTTPS
+        value: "1"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_TICKET_TABLE
+        value: ticket_requests
+      - key: SUPABASE_TABLE_RESERVATIONS_TABLE
+        value: table_reservations
+      - key: SUPABASE_EVENT_LOG_TABLE
+        value: event_log
+      - key: SUPABASE_PROOF_BUCKET
+        value: undercover-proofs
+      - key: SUPABASE_TICKET_BUCKET
+        value: undercover-tickets
+      - key: TICKET_STATUS_INITIAL
+        value: "En attente"
+      - key: TICKET_STATUS_PROOF
+        value: "Paiement à vérifier"
+      - key: TICKET_STATUS_VALIDATED
+        value: "Validé"
+      - key: TICKET_STATUS_REJECTED
+        value: "Refusé"
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: ADMIN_SESSION_SECRET
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      - key: WHATSAPP_TOKEN
+        sync: false
+      - key: WHATSAPP_PHONE_NUMBER_ID
+        sync: false
+      - key: WHATSAPP_GRAPH_VERSION
+        value: v21.0
